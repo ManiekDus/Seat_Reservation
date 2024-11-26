@@ -20,7 +20,7 @@ def add_reservation(seats:list):
             print("Numer miejsca musi być liczbą")
     numerMiejsca = int(n)
     n = input("Podaj swoje imie: ")
-    if(seats[numerMiejsca] != 'None'):
+    if(seats[numerMiejsca] == 'None'):
         imie = n
         seats[numerMiejsca] = imie
         print("Pomyslnie dodano rezerwacje")
@@ -39,9 +39,11 @@ def remove_reservation(seats:list):
                 print(f"Numer miejsca musi mieścić się między 1 i {c}.")
         else:
             print("Numer miejsca musi być liczbą")
-    numerMiejsca = int(n)
-    seats[numerMiejsca] = "None"
-    print("Pomyslnie usunieto rezerwacje")
+    if(seats[int(n)] != 'None'):
+        seats[int(n)] = 'None'
+        print("Pomyslnie usunieto rezerwacje")
+    else:
+        print("Miejsce jest wolne")
 
 def modify_reservation(seats:list):
     c = len(seats)-1
@@ -58,12 +60,12 @@ def modify_reservation(seats:list):
                 print(f"Numer miejsca musi mieścić się między 1 i {c}.")
         else:
             print("Numer miejsca musi być liczbą")
-    numerMiejsca = int(n)
-    seats[numerMiejsca] = imie
-    print("Pomyslnie zmodyfikowano rezerwacje")
+    if(seats[int(n)] == 'None'):
+        seats[int(n)] = imie
+        print("Pomyslnie zmodyfikowano rezerwacje")
+    else:
+        print("Miejsce jest juz zajete")
     
-
-
 def print_seats(seats):
     for i in range(1,len(seats)):
         if(seats[i] == "None"):
