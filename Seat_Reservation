@@ -81,11 +81,10 @@ def check_availability(seats):
             print(f"{int(i)} -> Zajęte")
 
 def add_multiple_reservations(seats):
-    check_if_numbers = True
-    check_if_inRange = True
-    seatIsAvailable = True
-
     while True:
+        check_if_numbers = True
+        check_if_inRange = True
+        seatIsAvailable = True
         n = input("Podaj liste numerow siedzen (numery oddzielone spacja): ")
         n = n.split(" ")
         print(n)
