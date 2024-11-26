@@ -61,7 +61,6 @@ def check_availability(seats):
         check_if_inRange = True
         n = input("Podaj liste numerow siedzen (numery oddzielone spacja): ")
         n = n.split(" ")
-        print(n)
         for i in range(len(n)):
             if(n[i].isnumeric() == False):
                 check_if_numbers = False
