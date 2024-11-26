@@ -1,11 +1,21 @@
-def add_reservation(seats):
+while True:
+        x = input("Podaj liczbe siedzen: ")
+        if(x.isnumeric() == True):
+            break
+        else:
+            print("Numer miejsca musi być liczbą")
+x = int(x)
+seats = ["None"]*(x+1)
+
+def add_reservation(seats:list):
+    c = len(seats)-1
     while True:
         n = input("Podaj numer siedzenia: ")
         if(n.isnumeric() == True):
-            if(int(n) < 11 and int(n)  > 0):
+            if(int(n) < len(seats) and int(n)  > 0):
                 break
             else:
-                print("Numer miejsca musi mieścić się między 1 i 10.")
+                print(f"Numer miejsca musi mieścić się między 1 i {c}.")
         else:
             print("Numer miejsca musi być liczbą")
     numerMiejsca = int(n)
@@ -14,23 +24,25 @@ def add_reservation(seats):
     seats[numerMiejsca] = imie
     print("Pomyslnie dodano rezerwacje")
     
-def remove_reservation(seats):
+def remove_reservation(seats:list):
+    c = len(seats)-1
     while True:
         n = input("Podaj numer siedzenia: ")
         if(n.isnumeric() == True):
-            if(int(n) < 11 and int(n)  > 0):
+            if(int(n) < len(seats) and int(n)  > 0):
                 break
             else:
-                print("Numer miejsca musi mieścić się między 1 i 10.")
+                print(f"Numer miejsca musi mieścić się między 1 i {c}.")
         else:
             print("Numer miejsca musi być liczbą")
     numerMiejsca = int(n)
     seats[numerMiejsca] = "None"
     print("Pomyslnie usunieto rezerwacje")
 
-def modify_reservation(seats):
+def modify_reservation(seats:list):
+    c = len(seats)-1
     imie = input("Podaj swoje imie: ")       
-    for i in range(1,11):
+    for i in range(1,len(seats)):
         if(seats[i] == imie):
             seats[i] = 'None'
     while True:
@@ -39,7 +51,7 @@ def modify_reservation(seats):
             if(int(n) < 11 and int(n)  > 0):
                 break
             else:
-                print("Numer miejsca musi mieścić się między 1 i 10.")
+                print(f"Numer miejsca musi mieścić się między 1 i {c}.")
         else:
             print("Numer miejsca musi być liczbą")
     numerMiejsca = int(n)
@@ -49,28 +61,30 @@ def modify_reservation(seats):
 
 
 def print_seats(seats):
-    for i in range(1,11):
+    for i in range(1,len(seats)):
         if(seats[i] == "None"):
             print(f"{i} -> Wolne")
         else:
             print(f"{i} -> {seats[i]}")
             
-def check_availability(seats):
+def check_availability(seats:list):
+    c = len(seats)-1
     while True:
         check_if_numbers = True
         check_if_inRange = True
         n = input("Podaj liste numerow siedzen (numery oddzielone spacja): ")
         n = n.split(" ")
+        print(n)
         for i in range(len(n)):
             if(n[i].isnumeric() == False):
                 check_if_numbers = False
-            elif(int(n[i]) <=0 or int(n[i]) >10):
+            elif(int(n[i]) <=0 or int(n[i]) > len(seats)-1):
                 check_if_inRange = False
         if(check_if_numbers):
             if(check_if_inRange):
                 break
             else:
-                print("Numer miejsca musi mieścić się między 1 i 10.")    
+                print(f"Numer miejsca musi mieścić się między 1 i {c}.")    
         else:
             print("Numer miejsca musi być liczbą") 
     for i in n:
@@ -79,7 +93,8 @@ def check_availability(seats):
         else:
             print(f"{int(i)} -> Zajęte")
 
-def add_multiple_reservations(seats):
+def add_multiple_reservations(seats:list):
+    c = len(seats)-1
     while True:
         check_if_numbers = True
         check_if_inRange = True
@@ -90,13 +105,13 @@ def add_multiple_reservations(seats):
         for i in range(len(n)):
             if(n[i].isnumeric() == False):
                 check_if_numbers = False
-            elif(int(n[i]) <=0 or int(n[i]) >10):
+            elif(int(n[i]) <=0 or int(n[i]) > len(seats)-1):
                 check_if_inRange = False
         if(check_if_numbers):
             if(check_if_inRange):
                 break
             else:
-                print("Numer miejsca musi mieścić się między 1 i 10.")    
+                print(f"Numer miejsca musi mieścić się między 1 i {c}.")    
         else:
             print("Numer miejsca musi być liczbą")
     imie = input("Podaj swoje imie: ") 
@@ -110,10 +125,10 @@ def add_multiple_reservations(seats):
     else:
         print("Podane miejsca sa juz zajete")
 
-def cancel_all_reservations(seats):
+def cancel_all_reservations(seats:list):
     p = 0
     imie = input("Podaj swoje imie: ") 
-    for i in range(1, 11):
+    for i in range(1, len(seats)):
         print(seats[i])
         if(seats[i] == imie):
             seats[i] = 'None'
@@ -121,12 +136,7 @@ def cancel_all_reservations(seats):
     if(p > 0):
         print("Pomysle usunieto rezerwacje")
     else:
-        print(f"Nie znaleziono rezerwacji pod imieniem: {imie}")
-    
-            
-
-
-seats = {1:"None", 2:"None", 3:"None", 4:"None", 5:"None", 6:"None", 7:"None", 8:"None", 9:"None", 10:"None",}
+        print(f"Nie znaleziono rezerwacji pod imieniem: {imie}")    
 
 def main():
     while True:
