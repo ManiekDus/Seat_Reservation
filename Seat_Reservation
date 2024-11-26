@@ -56,9 +56,9 @@ def print_seats(seats):
             print(f"{i} -> {seats[i]}")
             
 def check_availability(seats):
-    check_if_numbers = True
-    check_if_inRange = True
     while True:
+        check_if_numbers = True
+        check_if_inRange = True
         n = input("Podaj liste numerow siedzen (numery oddzielone spacja): ")
         n = n.split(" ")
         print(n)
