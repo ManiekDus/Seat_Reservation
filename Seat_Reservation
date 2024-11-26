@@ -19,10 +19,14 @@ def add_reservation(seats:list):
         else:
             print("Numer miejsca musi być liczbą")
     numerMiejsca = int(n)
-    n = input("Podaj swoje imie: ")       
-    imie = n
-    seats[numerMiejsca] = imie
-    print("Pomyslnie dodano rezerwacje")
+    n = input("Podaj swoje imie: ")
+    if(seats[numerMiejsca] != 'None'):
+        imie = n
+        seats[numerMiejsca] = imie
+        print("Pomyslnie dodano rezerwacje")
+    else:
+        print("Miejsce jest juz zajete")
+    
     
 def remove_reservation(seats:list):
     c = len(seats)-1
